@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Assignment 2 — Human-Centered AI Design</title>
+  <style>
+    :root{
+      --bg:#ffffff;--card:#ffffff;--muted:#374151;--text:#0b1220;--border:#e5e7eb;--accent:#2563eb;--ok:#16a34a;
+    }
+    html,body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,Apple Color Emoji,Segoe UI Emoji;line-height:1.65;margin:0}
+    main{max-width:960px;margin:40px auto;padding:0 20px 80px}
+    header{border-bottom:1px solid var(--border);padding-bottom:16px;margin-bottom:24px}
+    h1{font-size:clamp(24px,3vw,36px);margin:0 0 6px}
+    h2{font-size:clamp(18px,2.2vw,28px);margin:28px 0 10px}
+    h3{font-size:clamp(16px,2vw,22px);margin:18px 0 8px}
+    p{color:var(--muted)}
+    .meta{display:flex;gap:16px;flex-wrap:wrap;color:#4b5563;font-size:14px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+    .mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace}
+    code{background:#f3f4f6;border:1px solid var(--border);padding:0 6px;border-radius:6px}
+    .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-items:center}
+    .node{background:#f9fafb;border:1px solid var(--border);border-radius:12px;padding:12px;text-align:center;color:#1f2937}
+    .arrow{text-align:center;color:#9ca3af}
+    .badge{display:inline-block;padding:2px 8px;border-radius:999px;border:1px solid var(--border);color:#374151;font-size:12px;margin-left:6px;background:#f3f4f6}
+    .note{font-size:13px;color:#6b7280}
+    a{color:var(--accent)}
+    footer p{color:#6b7280}
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Assignment 2 — Human-Centered AI Design</h1>
+    <div class="meta">
+      <div><strong>Student:</strong> HAO</div>
+      <div><strong>Course:</strong> AI‑Enabled Findability & Semantic Systems</div>
+      <div><strong>Submission Type:</strong> Website URL (HTML)</div>
+    </div>
+  </header>
+
+  <section id="objective" class="card">
+    <h2>Objective</h2>
+    <p>This submission refines two prompts for an AI movie recommender, designs a simple interaction workflow, and reflects on ethical implications. It follows the provided worksheet and rubric.</p>
+  </section>
+
+  <section id="prompt1" class="card">
+    <h2>Refined Prompt 1 — Roommates with Divergent Tastes <span class="badge">variation of breakout</span></h2>
+    <h3>Prompt Text</h3>
+    <p class="mono">“From titles available in our region, suggest 5 fast‑paced films that <strong>blend action with a romantic subplot</strong> while <strong>avoiding gore, death, or intense graphic scenes</strong>. Each title must be suitable for college students (rating ≤ PG‑13), runtime ≤ 120 minutes, and include English subtitles. For each, add a one‑sentence rationale explaining how it balances both genres. Cite the rating and runtime source with a date; include at least two international options. If no perfect match, list two compromise picks (one action‑leaning, one romance‑leaning) and explain the trade‑off.”</p>
+    <h3>Rationale (≈170 words)</h3>
+    <p>This prompt operationalizes the breakout personas: two college roommates with different tastes and clear boundaries around violence and pacing. It encodes <strong>user goals</strong> (co‑viewing, fast decisions), <strong>pain points</strong> (graphic content, slow plots), and <strong>context</strong> (regional availability, student audience). It specifies <strong>eligibility constraints</strong> (rating, runtime, subtitles) to reduce irrelevant results and asks for <strong>balanced genre rationales</strong> to make trade‑offs explicit. Provenance is mandated by requesting <strong>rating/runtime sources and dates</strong>, supporting transparency and recency. International titles counter echo‑chamber bias and broaden cultural representation. Compromise options acknowledge that real catalogs are imperfect and give users control to pick a direction. Collectively, these edits increase clarity, constrain unsafe outcomes, and align with Human‑Centered AI principles: <em>usability</em> (tight scope, short rationale), <em>explainability</em> (why this), <em>transparency</em> (sources), and <em>fairness</em> (diverse catalog). The structure is reproducible and testable, enabling consistent evaluation and easy follow‑ups such as “more romance” or “shorter films only.”</p>
+  </section>
+
+  <section id="prompt2" class="card">
+    <h2>Refined Prompt 2 — Family Mode for Working Parent <span class="badge">Module 2 persona</span></h2>
+    <h3>Prompt Text</h3>
+    <p class="mono">“We need <strong>3 PG titles ≤ 100 minutes</strong> with <strong>Spanish audio and captions</strong> for a family movie night. Show availability on a living‑room TV in our region. Provide a one‑sentence explanation for each pick citing <strong>rating source</strong> (e.g., MPAA/BBFC), <strong>runtime source</strong>, and <strong>language availability</strong> with a timestamp. If few options exist, include one near‑miss with a clear note (e.g., ‘no Spanish dub’). Present results as a short list we can decide from in under 10 minutes.”</p>
+    <h3>Rationale (≈170 words)</h3>
+    <p>This prompt instantiates the Module 2 persona “Lin,” a working parent deciding quickly with children present. It formalizes <strong>hard constraints</strong> that drive findability and safety: rating threshold, runtime limit, regional device availability, and Spanish audio/captions. The request for <strong>one‑sentence explanations</strong> keeps cognitive load low while communicating key fit criteria. Requiring <strong>sources and timestamps</strong> for rating, runtime, and language availability turns recommendations into <em>defensible</em> answers with recency. The <strong>near‑miss</strong> clause prevents silent filtering and builds trust by stating why candidates fail. The concise list format supports the 10‑minute decision window and a shared living‑room context. Together, these edits demonstrate human‑centered values: <em>relevance</em> (family profile), <em>explainability</em> (why this), <em>transparency</em> (provenance), and <em>user control</em> (acknowledged trade‑offs). The prompt is measurable and testable, producing outputs that can be audited against metadata (content rating, duration, language) aligned with Schema.org and PROV practices.</p>
+  </section>
+
+  <section id="flow" class="card">
+    <h2>Interaction Workflow (Annotated)</h2>
+    <div class="flow" aria-label="four-step flow">
+      <div class="node"><strong>1. User Input</strong><br><span class="note">Submit refined prompt (Prompt 1 or 2).</span></div>
+      <div class="arrow">➜</div>
+      <div class="node"><strong>2. AI Initial Response</strong><br><span class="note">Returns list with rationales + sources/timestamps.</span></div>
+      <div class="arrow">➜</div>
+      <div class="node"><strong>3. User Feedback</strong><br><span class="note">Natural‑language tweaks (e.g., “more romance”, “≤ 90 min”, “Spanish only”).</span></div>
+      <div class="arrow">➜</div>
+      <div class="node"><strong>4. AI Adjusted Response</strong><br><span class="note">Re‑rank or replace titles; show ‘why included/excluded’ diagnostics.</span></div>
+    </div>
+    <h3>Human‑Centered Notes</h3>
+    <ul>
+      <li><strong>User Control:</strong> Step 3 enables overrides without starting over; preferences are explicit chips (rating, runtime, language).</li>
+      <li><strong>Explainability:</strong> Steps 2 & 4 require concise “why this” rationales and expose sources for rating/runtime/language.</li>
+      <li><strong>Responsiveness:</strong> The system must update within one turn, preserving prior constraints to reduce user effort.</li>
+      <li><strong>Fairness & Diversity:</strong> Encourage international options and disclose when catalog limitations affect results.</li>
+    </ul>
+  </section>
+
+  <section id="ai-interaction-log" class="card">
+    <h2>AI Interaction Log</h2>
+
+    <article>
+      <h3>Entry 1 — Movie Ranking Formula for Roommates</h3>
+      <p><strong>Prompt:</strong> “Given two college roommates—A avoids gore/death and wants fast pacing; B needs a romance thread—propose a ranking formula with explicit weights for action intensity, romance strength, rating ≤ PG‑13, runtime ≤120, and EN subtitles. Output as a weighted list plus one example calculation.”</p>
+      <p><strong>Summary:</strong> Gemini proposed a weighted formula R = w1*I + w2*M + w3*P + w4*L + w5*S with weights: action 0.35, romance 0.35, PG‑13 compliance 0.20 (binary), runtime 0.05 (shorter preferred), EN subtitles 0.05 (binary); demonstrated an example on “Spider‑Man: Homecoming.”</p>
+      <p><strong>Evaluation:</strong> <em>Improved my thinking</em> — reproducible and concrete, but PG‑13 and subtitles should be treated as <em>eligibility rules</em> rather than soft weights.</p>
+      <p><strong>Change made:</strong> Converted rating/subtitles to hard eligibility; weights apply to comparable facets (action/romance/pace). Added near‑miss handling.</p>
+      <p class="note">Model: Gemini 2.5 Flash · Source: user‑provided Doc</p>
+    </article>
+
+    <article>
+      <h3>Entry 2 — “Why this” Micro‑Explanations</h3>
+      <p><strong>Prompt:</strong> “Draft one‑sentence ‘why this’ rationales that show genre balance without spoilers. Provide 3 templates and keep them ≤20 words.”</p>
+      <p><strong>Summary:</strong> Returned three concise templates, e.g., “Thrilling set‑pieces with a tender arc; PG‑13; 110 min; EN subs.”</p>
+      <p><strong>Evaluation:</strong> <em>Useful</em> — concise and readable, but lacked provenance fields (source/date).</p>
+      <p><strong>Change made:</strong> Appended placeholders for <em>rating/runtime source + date</em> (e.g., “rating: BBFC 2024‑11; runtime: distributor site”).</p>
+      <p class="note">Model: Gemini 2.5 Flash · Source: user‑provided Doc</p>
+    </article>
+
+    <article>
+      <h3>Entry 3 — Accessibility & Provenance Fields</h3>
+      <p><strong>Prompt:</strong> “For a family profile needing Spanish audio + captions, list the minimum provenance fields to show on card and to store in metadata (Schema.org/PROV terms welcome).”</p>
+      <p><strong>Summary:</strong> On‑card: contentRating, runtime, subtitleLanguage/audioLanguage, region availability + timestamp. Backend: source/provider, method (human/ASR/MT), model+version, confidence; suggested Schema.org/PROV terms.</p>
+      <p><strong>Evaluation:</strong> <em>Improved my thinking</em> — clear split between UI and data‑layer requirements.</p>
+      <p><strong>Change made:</strong> Prompt 2 now requires visible timestamp/provider; metadata stores provider/method/version/confidence for auditability.</p>
+      <p class="note">Model: Gemini 2.5 Flash · Source: user‑provided Doc</p>
+    </article>
+
+    <article>
+      <h3>Entry 4 — One‑Turn Overrides & Acknowledging Unmet Constraints</h3>
+      <p><strong>Prompt:</strong> “Design a one‑turn refinement grammar for user overrides (e.g., ‘more romance’, ‘≤90 min’, ‘Spanish only’) and show how the AI should acknowledge constraints it cannot meet.”</p>
+      <p><strong>Summary:</strong> Proposed keyword grammar mapping to facet chips (action/romance/rating/runtime/language) and patterns for near‑miss acknowledgments when constraints can’t be satisfied.</p>
+      <p><strong>Evaluation:</strong> <em>Useful</em> — supports rapid Step 3→4 iterations; needed explicit region/device availability fallback.</p>
+      <p><strong>Change made:</strong> Added region/device fallback and standardized “near‑miss with reason” diagnostics in the workflow.</p>
+      <p class="note">Model: Gemini 2.5 Flash · Source: user‑provided Doc</p>
+    </article>
+
+    <article>
+      <h3>Entry 5 — Ethical Edge Cases & Mitigations</h3>
+      <p><strong>Prompt:</strong> “List edge cases where ‘action + romance’ could surface unsafe or culturally narrow results. Suggest mitigations that preserve user choice but reduce harm.”</p>
+      <p><strong>Summary:</strong> Risks: gender stereotypes, glorification of violence/control, Western monoculture, sexualization. Mitigations: diversity filters, content warnings/tags, soft penalties for harmful tropes, and a ‘what to watch next’ nudge with more balanced alternatives.</p>
+      <p><strong>Evaluation:</strong> <em>Useful</em> — aligns with class ethics and directly informs our reflection and rubric mapping.</p>
+      <p><strong>Change made:</strong> Added international‑title requirement to Prompt 1; defaulted to parent‑mode filters in family scenarios.</p>
+      <p class="note">Model: Gemini 2.5 Flash · Source: user‑provided Doc</p>
+    </article>
+  </section>
+
+  <footer class="card">
+    <p class="note">Designed for IKNS 5989 — AI‑Enabled Findability & Semantic Systems. Built with semantic, accessible HTML/CSS. No external dependencies.</p>
+  </footer>
+</main>
+</body>
+</html>
